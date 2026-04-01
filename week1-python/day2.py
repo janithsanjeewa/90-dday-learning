@@ -1,9 +1,12 @@
 # Day 2 Python Practice
 
-print("Hello World")
-
 name = "Janith"
-print(name)
+age = 25
+salary = 3000.50
 
-for i in range(5):
-    print(i)
+print("Name:", name)
+print("Age:", age)
+print("Salary:", salary)
+
+bonus = salary * 0.10
+print("Bonus:", bonus)
