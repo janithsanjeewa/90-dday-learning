@@ -31,3 +31,57 @@ INSERT INTO transactions (user_id, amount, type, date) VALUES
 SELECT u.name, t.amount
 FROM users u
 JOIN transactions t ON u.user_id = t.user_id;
+
+SELECT u.name, SUM(t.amount) AS total_spent
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+WHERE t.type = 'bet'
+GROUP BY u.name;
+
+SELECT u.name, SUM(t.amount) AS total_spent
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+WHERE t.type = 'bet'
+GROUP BY u.name
+ORDER BY total_spent DESC
+LIMIT 1;
+
+SELECT u.name
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+GROUP BY u.name
+HAVING SUM(CASE WHEN t.type = 'win' THEN t.amount ELSE 0 END) = 0;
+
+SELECT date, SUM(amount) AS total_bets
+FROM transactions
+WHERE type = 'bet'
+GROUP BY date;
+
+SELECT u.name, t.amount, t.type
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id;
+
+SELECT u.name, SUM(t.amount) AS total_bet
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+WHERE t.type = 'bet'
+GROUP BY u.name;
+
+SELECT u.name, SUM(t.amount) AS total_bet
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+WHERE t.type = 'bet'
+GROUP BY u.name
+ORDER BY total_bet DESC
+LIMIT 1;
+
+SELECT u.name
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+GROUP BY u.name
+HAVING SUM(CASE WHEN t.type = 'win' THEN t.amount ELSE 0 END) = 0;
+
+SELECT date, SUM(amount) AS total_bets
+FROM transactions
+WHERE type = 'bet'
+GROUP BY date;

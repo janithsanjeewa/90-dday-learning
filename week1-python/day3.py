@@ -1,12 +1,10 @@
-# Day 2 Python Practice
+# Day 3 Python Practice
 
-name = "Janith"
-age = 25
-salary = 3000.50
+numbers = [100, 200, 300, 400]
 
-print("Name:", name)
-print("Age:", age)
-print("Salary:", salary)
+total = sum(numbers)
+print("Total:", total)
 
-bonus = salary * 0.10
-print("Bonus:", bonus)
+for num in numbers:
+    if num > 250:
+        print("High value:", num)
