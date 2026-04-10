@@ -1,0 +1,11 @@
+user,amount,type,country
+John,100,bet,UK
+John,50,win,UK
+Alice,300,bet,Germany
+Alice,0,win,Germany
+Bob,150,bet,France
+Bob,400,win,France
+Emma,500,bet,Italy
+Emma,100,win,Italy
+David,1000,bet,Spain
+David,0,win,Spain
