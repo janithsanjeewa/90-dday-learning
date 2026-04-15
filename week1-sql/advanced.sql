@@ -85,3 +85,45 @@ SELECT date, SUM(amount) AS total_bets
 FROM transactions
 WHERE type = 'bet'
 GROUP BY date;
+
+SELECT 
+    u.country,
+    SUM(CASE WHEN t.type='bet' THEN t.amount ELSE 0 END) -
+    SUM(CASE WHEN t.type='win' THEN t.amount ELSE 0 END) AS GGR
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+GROUP BY u.country;
+
+SELECT 
+    u.country,
+    SUM(CASE WHEN t.type='bet' THEN t.amount ELSE 0 END) -
+    SUM(CASE WHEN t.type='win' THEN t.amount ELSE 0 END) AS GGR
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+GROUP BY u.country
+ORDER BY GGR DESC
+LIMIT 1;
+
+SELECT u.name, COUNT(*) AS total_transactions
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+GROUP BY u.name
+HAVING total_transactions > 2;
+
+SELECT * FROM transactions WHERE type = 'win';
+
+SELECT SUM(amount) FROM transactions WHERE type = 'win';
+
+SELECT u.name, SUM(t.amount)
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+WHERE t.type = 'bet'
+GROUP BY u.name;
+
+SELECT u.name, SUM(t.amount) AS total_bet
+FROM users u
+JOIN transactions t ON u.user_id = t.user_id
+WHERE t.type = 'bet'
+GROUP BY u.name
+ORDER BY total_bet DESC
+LIMIT 1;
